@@ -1,9 +1,8 @@
 package com.pmdm.actividad06pmdm
 
 /**
- * Clase tipo enum que indica los valores posibles de las cartas
+ * En esta clase solo pondremos los diferentes Naipes (Números) que puede tener la baraja francesa:
  */
-enum class Naipes(val valor: Int) {
-    AS (1), DOS(2), TRES(3), CUATRO(4), CINCO(5), SEIS(6), SIETE(7),
-    OCHO(8), NUEVE(9), DIEZ(10), VALET(11), DAMA(12), ROI(13)
-}
+enum class Naipes(val valor: Int) {As (1), Dos(2), Tres(3), Cuatro(4),
+    Cinco(5), Seis(6), Siete(7), Ocho(8), Nueve(9), Diez(10),
+    Sota(11), Caballo(12), Rey(13)}

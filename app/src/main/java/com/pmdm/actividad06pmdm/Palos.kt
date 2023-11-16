@@ -1,8 +1,6 @@
 package com.pmdm.actividad06pmdm
 
 /**
- * Clase tipo enum que indica los tipos de palos de la baraja
+ * En esta clase solo pondremos los diferentes palos que puede tener una carta de la baraja francesa:
  */
-enum class Palos (val valor : Int){
-    CORAZONES (0), DIAMANTES (1), TREBOLES (2), PICAS (3)
-}
+enum class Palos (val valor : Int){Corazon (0), Diamante (1), Trebol (2), Pica (3)}

@@ -1,52 +1,42 @@
 package com.pmdm.actividad06pmdm
 
 /**
- * Clase baraja
- * @property listaCartas lista de cartas de la baraja
- * @property tamanio indica la cantidad de cartas de la baraja
- * @see Carta
+ * Clase baraja, donde podremos crear una baraja nueva, podremos barajar las cartas y mostrarlas:
  */
 class Baraja {
-    companion object{
-        val listaCartas : ArrayList<Carta> = arrayListOf()
-        var tamanio = 0
-        init {
-            creaBaraja()
-            barajar()
-        }
+    companion object{ // Usamos el Companion Object para no tener que inicializar las variablesq directamente en el constructor primario
+        val cardlist : ArrayList<Carta> = arrayListOf()
+        var size = 0
+        init {newDeck();shuffle()}
 
         /**
-         * Crea la baraja de cartas desde las clases Naipes y Palos
-         * @see Naipes
-         * @see Palos
+         * Crea la baraja de cartas usando las clases creadas (naipes y palos):
          */
-        fun creaBaraja(){
-            listaCartas.clear()
-            for(i in Palos.values()){
-                for(x in Naipes.values()){
-                    val micarta = Carta(x,i,0,0,0)
-                    listaCartas.add(micarta)
+        fun newDeck(){
+            cardlist.clear() // Eliminamos lo que pueda haber en la lista de cartas
+            for(v in Palos.values()){
+                for(j in Naipes.values()){
+                    val card = Carta(j,v,0,0,0)
+                    cardlist.add(card) // Vamos rellenando la lista con las cartas
                 }
             }
-            tamanio = listaCartas.size
+            size = cardlist.size // Actualizamos el tamaño de la lista
         }
 
         /**
-         * Baraja las cartas
+         * Esta función barajará las cartas (Desordenará las cartas de la lista de cartas de la baraja):
          */
-        fun barajar(){
-            listaCartas.shuffle()
-        }
+        fun shuffle(){cardlist.shuffle()}
+
         /**
-         * Saca una carta de la baraja
-         * @return devuleve una carta de la baraja
+         * Esta función mostrará una carta de la baraja si la baraja tiene como mínimo 1 carta:
          */
         fun cogerCarta():Carta?{
-            if (listaCartas.size>0) {
-                val cartaTemp = listaCartas.last()
-                listaCartas.remove(cartaTemp)
-                tamanio = listaCartas.size
-                return cartaTemp
+            if (cardlist.size>0){
+                val cardshown = cardlist.last() // Sacará la última carta de la lista
+                cardlist.remove(cardshown) // Eliminará la última de la lista para que no se repita despues
+                size = cardlist.size // Actualiza el tamaño de la lista de cartas
+                return cardshown
             }
             return null
         }
