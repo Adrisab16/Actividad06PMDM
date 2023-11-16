@@ -61,7 +61,7 @@ fun MainView(){
     // Aquí estarán las variable que inicializaremos:
     val context = LocalContext.current
     val deck = Baraja
-    var revealcard by rememberSaveable {mutableStateOf("reverse")}
+    var revealcard by rememberSaveable {mutableStateOf("reverso")} // Reverso se linkea al nombre que tenemos en resources, si se cambia el nombre, la app no inicia
 
     // Diseño de la MainView:
 
@@ -82,11 +82,11 @@ fun MainView(){
             Button(onClick = {
                     val card = deck.cogerCarta() // Variable para mostrar cartas de la lista de cartas
                     // Si no hay cartas en la baraja, aparecerá el mensaje toast:
-                    revealcard = if (card == null) {Toast.makeText(context,"Ups, ya no hay más cartas para mostrar", Toast.LENGTH_SHORT).show(); "reverse"} // Mensaje toast para cuando nos quedamos sin cartas en la baraja:
+                    revealcard = if (card == null) {Toast.makeText(context,"Ups, ya no hay más cartas para mostrar", Toast.LENGTH_SHORT).show(); "reverso"} // Mensaje toast para cuando nos quedamos sin cartas en la baraja:
                     else {"c" + card.idDrawable.toString()} // Si hay cartas en la baraja, las mostrará
                 },
             ) {Text(text = "Show Card")} // Texto del botón
-            Button(onClick = {deck.newDeck(); deck.shuffle(); revealcard = "reverse"; deck.size = deck.cardlist.size
+            Button(onClick = {deck.newDeck(); deck.shuffle(); revealcard = "reverso"; deck.size = deck.cardlist.size
             }){Text("Reset")}} // Todas las funcionalidades que sacamos de baraja() al pulsar el botón
 
         Row(modifier = Modifier.padding(top = 50.dp), horizontalArrangement = Arrangement.Center)
