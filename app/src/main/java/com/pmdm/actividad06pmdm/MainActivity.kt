@@ -85,9 +85,9 @@ fun MainView(){
                     revealcard = if (card == null) {Toast.makeText(context,"Ups, ya no hay más cartas para mostrar", Toast.LENGTH_SHORT).show(); "reverse"} // Mensaje toast para cuando nos quedamos sin cartas en la baraja:
                     else {"c" + card.idDrawable.toString()} // Si hay cartas en la baraja, las mostrará
                 },
-            ) {Text(text = "Show Card")}
+            ) {Text(text = "Show Card")} // Texto del botón
             Button(onClick = {deck.newDeck(); deck.shuffle(); revealcard = "reverse"; deck.size = deck.cardlist.size
-            }){Text("Reset")}}
+            }){Text("Reset")}} // Todas las funcionalidades que sacamos de baraja() al pulsar el botón
 
         Row(modifier = Modifier.padding(top = 50.dp), horizontalArrangement = Arrangement.Center)
         {
@@ -99,6 +99,10 @@ fun MainView(){
         }
     }
 }
+
+/**
+ * Preview del diseño del programa principal:
+ */
 @Preview(showBackground = true)
 @Composable
 fun Preview() {AppTheme {MainView()}}
